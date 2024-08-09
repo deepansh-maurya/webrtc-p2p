@@ -35,6 +35,7 @@ export const config = {
           },
         },
       ] as RtpCodecCapability[],
+      announcedIp: "38.183.52.172",
     },
 
     webRtcTransport: {

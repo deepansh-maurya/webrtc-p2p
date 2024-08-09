@@ -206,7 +206,8 @@ const VideoComponent = () => {
     });
     video.srcObject = stream;
     console.log(stream, stream1);
-
+    video.autoplay = true;
+    video.muted = true;
     video.play();
 
     oriSocket.send(

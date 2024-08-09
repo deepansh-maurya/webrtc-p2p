@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "com": "tsc -b",
     "dev": "nodemon  dotenv/config --experimental-json-modules dist/index.js",
     "start": " ts-node  src/index.ts"
   },
