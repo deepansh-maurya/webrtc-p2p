@@ -1,7 +1,7 @@
+import axios from "axios";
 import {
   RtpCodecCapability,
   TransportListenInfo,
-  TransportListenIp,
   WorkerLogTag,
 } from "mediasoup/node/lib/types";
 import os from "os";
@@ -41,15 +41,7 @@ export const config = {
       listenIps: [
         {
           ip: "0.0.0.0",
-          announcedIp: "13.228.225.19",
-        },
-        {
-          ip: "0.0.0.0",
-          announcedIp: "18.142.128.26",
-        },
-        {
-          ip: "0.0.0.0",
-          announcedIp: "54.254.162.138",
+          announcedIp: "127.0.0.1",
         },
       ] as TransportListenInfo[],
       maxINcomeBitrate: 1500000,

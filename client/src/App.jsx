@@ -200,7 +200,12 @@ const VideoComponent = () => {
     console.log(stream, "media from producer");
 
     const video = document.querySelector("#video2");
+    const stream1 = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: true,
+    });
     video.srcObject = stream;
+    console.log(stream, stream1);
 
     video.play();
 

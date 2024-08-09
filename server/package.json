@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "com":"tsc -b",
+    "com": "tsc -b",
     "dev": "nodemon  dist/index.js",
-    "start":"ts-node src/index.ts"
+    "start": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
   "dependencies": {
     "@types/express": "^4.17.21",
     "@types/ws": "^8.5.12",
+    "axios": "^1.7.3",
     "express": "^4.19.2",
     "mediasoup": "^3.14.9",
     "nodemon": "^3.1.4",

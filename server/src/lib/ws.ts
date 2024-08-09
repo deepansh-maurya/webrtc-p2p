@@ -62,7 +62,6 @@ const websocketConnection = async (websocket: WebSocket.Server) => {
 
   const ongetroutercapabilities = (event: string, ws: WebSocket) => {
     send(ws, "routercapability", mediaSoupRouter.rtpCapabilities);
-    console.log("sent rtpcapa", mediaSoupRouter.rtpCapabilities);
   };
   const oncreatePRoducerTransport = async (event: string, ws: WebSocket) => {
     try {
@@ -80,7 +79,7 @@ const websocketConnection = async (websocket: WebSocket.Server) => {
   };
   const onconnectPRoducerTransport = async (event: any, ws: WebSocket) => {
     try {
-      console.log(event.dtlsParameters, "dtls");
+      console.log("dtls");
 
       await producerTransport.connect({ dtlsParameters: event.dtlsParameters });
     } catch (error) {
@@ -91,7 +90,6 @@ const websocketConnection = async (websocket: WebSocket.Server) => {
   };
   const onproduce = async (event: any, ws: WebSocket) => {
     const { kind, rtpParameters } = event;
-    console.log(event);
 
     producer = await producerTransport.produce({ kind, rtpParameters });
     const message = {
@@ -126,19 +124,15 @@ const websocketConnection = async (websocket: WebSocket.Server) => {
         mediaSoupRouter
       );
 
-      console.log(event, "event");
-
       consumerTransport = transport;
       send(ws, "subtransportcreated", params);
 
-      console.log("consumer transport created", consumerTransport);
+      console.log("consumer transport created");
     } catch (error) {
       console.error(error);
     }
   };
   const onconnectConsumerTransport = async (event: any, ws: WebSocket) => {
-    console.log(consumerTransport, "consumer transport");
-
     await consumerTransport.connect({ dtlsParameters: event.dtlsParameters });
     send(ws, "subconnected", "consumer connected");
 
