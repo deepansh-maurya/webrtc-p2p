@@ -18,9 +18,9 @@ const createWebrtcTransport = async (mediasoupRouter: Router) => {
     listenInfos: [
       {
         protocol: "udp",
-        ip: "192.168.1.4",
+        ip: "0.0.0.0",
         //@ts-ignore
-        // announcedAddress: "38.183.62.45",
+        announcedAddress: process.env.MEDIASOUP_ANNOUNCED_IP,
         portRange: {
           min: Number(process.env.MEDIASOUP_MIN_PORT) || 10000,
           max: Number(process.env.MEDIASOUP_MAX_PORT) || 10100,

@@ -6,7 +6,7 @@ let oriProduce;
 let consumerTransport;
 const VideoComponent = () => {
   const setup = () => {
-    oriSocket = new WebSocket("ws://localhost:8080");
+    oriSocket = new WebSocket("https://webrtc-p2p-3.onrender.com");
     oriSocket.onopen = () => {
       console.log("socket connected to server");
 
