@@ -15,16 +15,19 @@ const createWebrtcTransport = async (mediasoupRouter: Router) => {
   announcedIp = response.data.ip;
 
   const transport = await mediasoupRouter.createWebRtcTransport({
-    listenIps: [
+    listenInfos: [
       {
-        ip: "0.0.0.0",
-        announcedIp: announcedIp,
+        protocol: "udp",
+        ip: "192.168.1.4",
+        //@ts-ignore
+        // announcedAddress: "38.183.62.45",
+        portRange: {
+          min: Number(process.env.MEDIASOUP_MIN_PORT) || 10000,
+          max: Number(process.env.MEDIASOUP_MAX_PORT) || 10100,
+        },
       },
     ],
-    enableUdp: true,
-    enableTcp: true,
-    preferUdp: true,
-    initialAvailableOutgoingBitrate: initialAvilableOUtgoingBitrate,
+    initialAvailableOutgoingBitrate: 1000000,
   });
 
   if (maxINcomeBitrate) {
@@ -34,6 +37,16 @@ const createWebrtcTransport = async (mediasoupRouter: Router) => {
       console.error(error);
     }
   }
+
+  console.log(
+    {
+      id: transport.id,
+      iceParameters: transport.iceParameters,
+      iceCandidates: transport.iceCandidates,
+      dtlsParameters: transport.dtlsParameters,
+    },
+    "important logs"
+  );
 
   return {
     transport,

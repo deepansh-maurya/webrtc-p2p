@@ -74,6 +74,8 @@ const VideoComponent = () => {
     }
     console.log(event.data);
 
+    console.log(event.data, "importtant logs");
+
     const transport = oriDevice.createSendTransport(event.data);
     console.log("client producer is created", transport);
 
@@ -105,6 +107,13 @@ const VideoComponent = () => {
         });
       }
     );
+
+    transport.on("connectionStatechange", (state) => {
+      if (state == "failed") {
+        console.error("connection faiedl");
+        throw new Error("failed");
+      }
+    });
 
     let stream = await getUserMedia(transport);
     console.log("getting the media of user ", stream);
